@@ -7,3 +7,4 @@ arxivpy               # For integrating Arxiv
 gensim                # For extractive summarization (optional)
 pandas                # For data manipulation
 numpy                 # For data processing
+python-dotenv         # For loading env secrets

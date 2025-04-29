@@ -1,6 +1,6 @@
 import arxiv_api
 
-def get_arxiv_papers(query: str, max_results: int = 50) -> list:
+def get_arxiv_papers(query: str, max_results: int = 10) -> list:
     """
     Fetches research papers from arXiv based on a query string.
     Args:

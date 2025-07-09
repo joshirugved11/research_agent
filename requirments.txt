@@ -2,7 +2,7 @@ transformers          # For Hugging Face models (BART, T5, GPT-Neo)
 torch                 # Required for running transformer models
 requests              # For making HTTP requests
 beautifulsoup4        # For scraping content from Scholar or other websites
-arxivpy               # For integrating Arxiv
+arxiv                 # For integrating Arxiv
 gensim                # For extractive summarization (optional)
 pandas                # For data manipulation
 numpy                 # For data processing

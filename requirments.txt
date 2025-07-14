@@ -10,3 +10,4 @@ python-dotenv         # For loading env secrets
 fpdf                  # To create pdf summaries
 biopython             # For fetching research papers 
 streamlit
+sympy

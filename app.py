@@ -3,7 +3,7 @@
 import streamlit as st
 from apis.semantic_scholar import fetch_papers_from_sematic_scholar
 from apis.pubmed import fetch_papers_from_pubmed
-from apis.core_api import fetch_papers_from_core
+from apis.arxiv_api import get_arxiv_papers
 from models.summariser import load_summarizer
 from models.utils import chunk_text, save_summary_to_pdf
 
@@ -12,7 +12,7 @@ st.set_page_config(page_title="Research Agent", layout="wide")
 st.title("📚 Research Agent – Summarize Academic Papers")
 
 # Source selection
-source = st.selectbox("Select Source", ["Semantic Scholar", "PubMed", "CORE"])
+source = st.selectbox("Select Source", ["Semantic Scholar", "PubMed", "Arxiv"])
 
 query = st.text_input("Enter your search query")
 
@@ -24,8 +24,8 @@ if st.button("Search"):
         papers = fetch_papers_from_sematic_scholar(query)
     elif source == "PubMed":
         papers = fetch_papers_from_pubmed(query)
-    elif source == "CORE":
-        papers = fetch_papers_from_core(query)
+    elif source == "Arxiv":
+        papers = get_arxiv_papers(query)
     else:
         papers = []
 

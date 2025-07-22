@@ -1,6 +1,7 @@
 # utils.py
 
 import os
+import re
 from fpdf import FPDF
 
 def read_text_from_file(file_path):
@@ -24,7 +25,8 @@ def save_summary_to_pdf(summary_text, filename):
     output_dir = "data/summaries"
     os.makedirs(output_dir, exist_ok=True)
 
-    safe_filename = filename.replace(" ", "_").replace("/", "_")[:50] + ".pdf"
+    # Remove special characters from filename
+    safe_filename = re.sub(r'[\\/*?:"<>|]', "_", filename)[:50] + ".pdf"
     output_path = os.path.join(output_dir, safe_filename)
 
     pdf = FPDF()
@@ -36,4 +38,4 @@ def save_summary_to_pdf(summary_text, filename):
         pdf.multi_cell(0, 10, line)
 
     pdf.output(output_path)
-    print(f"Summary saved to {output_path}")
+    print(f"✅ Summary saved to {output_path}")

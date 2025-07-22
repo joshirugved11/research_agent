@@ -1,7 +1,6 @@
 import os
-from apis.semantic_scholar import fetch_papers_from_semantic_scholar
-from apis.pubmed import fetch_paers_from_pubmed
-from apis.core_api import fetch_papers_from_core
+from apis.semantic_scholar import fetch_papers_from_sematic_scholar
+from apis.pubmed import fetch_papers_from_pubmed
 from apis.arxiv_api import get_arxiv_papers
 from models.summariser import load_summarizer
 from models.utils import read_text_from_file, chunk_text, save_summary_to_pdf
@@ -21,21 +20,18 @@ def select_source():
     print("\n📚 Choose a source:")
     print("1. Semantic Scholar")
     print("2. PubMed")
-    print("3. CORE")
-    print("4. Arxiv")
-    return input("Enter choice (1/2/3/4): ").strip()
+    print("3. Arxiv")
+    return input("Enter choice (1/2/3): ").strip()
 
 def main():
     choice = select_source()
     query = input("\n🔍 Enter your search query: ")
 
     if choice == "1":
-        papers = fetch_papers_from_semantic_scholar(query)
+        papers = fetch_papers_from_sematic_scholar(query)
     elif choice == "2":
-        papers = fetch_paers_from_pubmed(query)
+        papers = fetch_papers_from_pubmed(query)
     elif choice == "3":
-        papers = fetch_papers_from_core(query)
-    elif choice == "4":
         papers = get_arxiv_papers(query)
     else:
         print("❌ Invalid choice.")
